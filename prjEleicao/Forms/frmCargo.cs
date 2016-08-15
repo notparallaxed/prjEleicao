@@ -23,7 +23,7 @@ namespace prjEleicao
         #region Form Focus
             private void frmCargo_Activated(object sender, EventArgs e)
         {
-            UsoComum.AnimacaoBotaoMenu(UsoComum.mdi.btnCargos, Color.FromArgb(255, 200, 0));
+            UsoComum.AnimacaoBotaoMenu(UsoComum.mdi.mnuCargo, Color.FromArgb(255, 200, 0));
             UsoComum.mdi.Text = "ELECTSIS - CARGOS";
         }
         #endregion

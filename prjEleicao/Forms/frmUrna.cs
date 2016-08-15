@@ -22,7 +22,7 @@ namespace prjEleicao
         #region Form Focus
         private void frmUrna_Activated(object sender, EventArgs e)
         {
-            UsoComum.AnimacaoBotaoMenu(UsoComum.mdi.btnUrnas, Color.FromArgb(198, 40, 40));
+            UsoComum.AnimacaoBotaoMenu(UsoComum.mdi.mnuUrnas, Color.FromArgb(198, 40, 40));
             UsoComum.mdi.Text = "ELECTSIS - URNAS";
         }
         #endregion

@@ -95,6 +95,37 @@ namespace prjEleicao
         bool logoff = false;
         #endregion
 
+        #region Carregar módulos
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            foreach (int modulo in UsoComum.UsuarioAtual.Modulos)
+            {                
+                switch(modulo){
+                    case 1:break;
+                    case 2:
+                        btnAtualUser.Click -= new EventHandler(btnAtualUser_Click);
+                        btnAtualUser.Click += new EventHandler(btnAtualUser_administrator_Click);
+                        break;
+                    case 8:break;
+                    case 9:break;
+                    default:
+                        foreach (Object obj in pnlMenu.Controls) {
+                            if (obj is Button)
+                            {
+                                Button botao = (Button)obj;
+                                if (botao.Name == UsoComum.Modulos.Find(x => x.Código == modulo).Componente)
+                                {
+                                    botao.Enabled = true;
+                                }
+                            }
+                        }
+                        break;
+                }
+
+            }
+        }
+        #endregion
+
         #region Form Closing 
         private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -168,7 +199,8 @@ namespace prjEleicao
         #endregion
 
         #region Instanciar Janelas
-
+        
+        //MENU
         private void btnCandidatos_Click(object sender, EventArgs e)
         {
             AbrirJanela(new frmCandidato());
@@ -189,6 +221,17 @@ namespace prjEleicao
             AbrirJanela(new frmUrna());
         }
 
+        //USUARIO
+        private void btnAtualUser_Click(object sender, EventArgs e)
+        {
+            Aviso.Alerta("Função não disponível!");
+        }
+        //USUÁRIO ADMINISTRADOR
+        void btnAtualUser_administrator_Click(object sender, EventArgs e)
+        {
+            AbrirJanela(new frmUsuarioAdmin());
+        }
+
         #endregion
 
         #region Mudança Texto Top Bar
@@ -197,22 +240,6 @@ namespace prjEleicao
             lblTopText.Text = this.Text;
         }
         #endregion
-
-        private void frmPrincipal_Load(object sender, EventArgs e)
-        {
-            foreach (Modulo modulo in UsoComum.Modulos) {
-                MessageBox.Show(modulo.Nome);
-            }
-        }
-
-        void btnAtualUser_administrator_Click(object sender, EventArgs e)
-        {
-            AbrirJanela(new frmUsuarioAdmin());
-        }
-        void btnAtualUser_normal_Click(object sender, EventArgs e) 
-        {
-            Aviso.Alerta("Função não disponível!");    
-        }
 
 
     }

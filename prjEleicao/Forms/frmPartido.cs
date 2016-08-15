@@ -29,7 +29,7 @@ namespace prjEleicao
         #region FormFocus
         private void frmPartido_Activated(object sender, EventArgs e)
         {
-            UsoComum.AnimacaoBotaoMenu(UsoComum.mdi.btnPartidos, Color.FromArgb(76, 175, 80));
+            UsoComum.AnimacaoBotaoMenu(UsoComum.mdi.mnuPartidos, Color.FromArgb(76, 175, 80));
             UsoComum.mdi.Text = "ELECTSIS - PARTIDOS";
         }
         #endregion

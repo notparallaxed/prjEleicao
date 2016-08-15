@@ -25,7 +25,7 @@ namespace prjEleicao
         #region FormFocus
         private void frmCandidato_Activated(object sender, EventArgs e)
         {
-            UsoComum.AnimacaoBotaoMenu(UsoComum.mdi.btnCandidatos, Color.FromArgb(63, 81, 181));
+            UsoComum.AnimacaoBotaoMenu(UsoComum.mdi.mnuCandidatos, Color.FromArgb(63, 81, 181));
             UsoComum.mdi.Text = "ELECTSIS - CANDIDATOS";
         }
             

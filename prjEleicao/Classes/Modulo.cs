@@ -6,7 +6,7 @@ using MySql.Data.MySqlClient;
 
 namespace prjEleicao
 {
-    class Modulo
+    public class Modulo
     {
         //FIELDS
         private int cd_modulo;
@@ -25,7 +25,7 @@ namespace prjEleicao
             set;
         }
 
-        public string Componente
+        public String Componente
         {
             get;
             set;
@@ -57,6 +57,7 @@ namespace prjEleicao
                 listaModulos.Add(new Modulo(int.Parse(dados["cd_modulo"].ToString()), dados["nm_modulo"].ToString(), dados["nm_componente"].ToString()));
             }
 
+            dados.Close();
             return listaModulos;
         }
     }
