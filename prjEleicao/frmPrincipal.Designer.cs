@@ -288,7 +288,6 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlTop;
-        private System.Windows.Forms.Button btnAtualUser;
         private System.Windows.Forms.Button btnLogOff;
         private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.Panel pnlMenu;
@@ -298,5 +297,6 @@
         public System.Windows.Forms.Button mnuCandidatos;
         public System.Windows.Forms.Button mnuEleicao;
         public System.Windows.Forms.Button mnuEleitor;
+        public System.Windows.Forms.Button btnAtualUser;
     }
 }

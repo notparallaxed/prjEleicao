@@ -224,7 +224,7 @@ namespace prjEleicao
         //USUARIO
         private void btnAtualUser_Click(object sender, EventArgs e)
         {
-            Aviso.Alerta("Função não disponível!");
+            AbrirJanela(new frmUsuario());
         }
         //USUÁRIO ADMINISTRADOR
         void btnAtualUser_administrator_Click(object sender, EventArgs e)
