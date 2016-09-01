@@ -58,7 +58,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.BackColor = System.Drawing.Color.Gainsboro;
             this.label3.Font = new System.Drawing.Font("Segoe UI Light", 10F);
-            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.ForeColor = System.Drawing.Color.DimGray;
             this.label3.Location = new System.Drawing.Point(521, 182);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(376, 19);
@@ -87,7 +87,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.lblConfSenha.BackColor = System.Drawing.Color.Gainsboro;
             this.lblConfSenha.Font = new System.Drawing.Font("Segoe UI Light", 10F);
-            this.lblConfSenha.ForeColor = System.Drawing.Color.White;
+            this.lblConfSenha.ForeColor = System.Drawing.Color.DimGray;
             this.lblConfSenha.Location = new System.Drawing.Point(26, 394);
             this.lblConfSenha.Name = "lblConfSenha";
             this.lblConfSenha.Size = new System.Drawing.Size(376, 19);
@@ -118,7 +118,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSenha.BackColor = System.Drawing.Color.Gainsboro;
             this.lblSenha.Font = new System.Drawing.Font("Segoe UI Light", 10F);
-            this.lblSenha.ForeColor = System.Drawing.Color.White;
+            this.lblSenha.ForeColor = System.Drawing.Color.DimGray;
             this.lblSenha.Location = new System.Drawing.Point(26, 324);
             this.lblSenha.Name = "lblSenha";
             this.lblSenha.Size = new System.Drawing.Size(376, 19);
@@ -246,7 +246,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.BackColor = System.Drawing.Color.Gainsboro;
             this.label6.Font = new System.Drawing.Font("Segoe UI Light", 10F);
-            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.ForeColor = System.Drawing.Color.DimGray;
             this.label6.Location = new System.Drawing.Point(26, 183);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(376, 19);
@@ -305,7 +305,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSenhaAtual.BackColor = System.Drawing.Color.Gainsboro;
             this.lblSenhaAtual.Font = new System.Drawing.Font("Segoe UI Light", 10F);
-            this.lblSenhaAtual.ForeColor = System.Drawing.Color.White;
+            this.lblSenhaAtual.ForeColor = System.Drawing.Color.DimGray;
             this.lblSenhaAtual.Location = new System.Drawing.Point(26, 252);
             this.lblSenhaAtual.Name = "lblSenhaAtual";
             this.lblSenhaAtual.Size = new System.Drawing.Size(376, 19);

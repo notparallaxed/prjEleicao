@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuarioAdmin));
             this.btnSave = new System.Windows.Forms.Button();
             this.pnlTopo = new System.Windows.Forms.Panel();
@@ -39,9 +40,21 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.lstView = new System.Windows.Forms.ListBox();
-            this.txtNome = new System.Windows.Forms.TextBox();
             this.pcbStatus = new System.Windows.Forms.PictureBox();
-            this.txtQtDigitos = new System.Windows.Forms.TextBox();
+            this.txtNmLogin = new System.Windows.Forms.TextBox();
+            this.lblSenha = new System.Windows.Forms.Label();
+            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.lblConfSenha = new System.Windows.Forms.Label();
+            this.txtConfSenha = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.chkPermissoes = new System.Windows.Forms.CheckedListBox();
+            this.asyncConsultar = new System.ComponentModel.BackgroundWorker();
+            this.asyncInserir = new System.ComponentModel.BackgroundWorker();
+            this.lblPermissoes = new System.Windows.Forms.Label();
+            this.asyncExcluir = new System.ComponentModel.BackgroundWorker();
+            this.asyncEditar = new System.ComponentModel.BackgroundWorker();
+            this.tmPesq = new System.Windows.Forms.Timer(this.components);
             this.pnlTopo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbStatus)).BeginInit();
             this.SuspendLayout();
@@ -64,6 +77,7 @@
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Visible = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // pnlTopo
             // 
@@ -99,6 +113,7 @@
             this.btnEdit.Size = new System.Drawing.Size(36, 30);
             this.btnEdit.TabIndex = 22;
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // txtPesq
             // 
@@ -110,6 +125,7 @@
             this.txtPesq.Name = "txtPesq";
             this.txtPesq.Size = new System.Drawing.Size(269, 29);
             this.txtPesq.TabIndex = 23;
+            this.txtPesq.TextChanged += new System.EventHandler(this.txtPesq_TextChanged);
             // 
             // btnExcluir
             // 
@@ -129,6 +145,7 @@
             this.btnExcluir.TabIndex = 21;
             this.btnExcluir.Tag = "";
             this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // lblTitulo
             // 
@@ -157,6 +174,7 @@
             this.btnAdd.TabIndex = 20;
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnCancel
             // 
@@ -177,19 +195,20 @@
             this.btnCancel.Text = "CANCELAR";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.BackColor = System.Drawing.Color.Gainsboro;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Light", 10F);
-            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label6.ForeColor = System.Drawing.Color.DimGray;
             this.label6.Location = new System.Drawing.Point(339, 173);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(376, 19);
             this.label6.TabIndex = 62;
-            this.label6.Text = "QUANTIDADE DE DÍGITOS";
+            this.label6.Text = "NOME DE LOGIN";
             // 
             // lstView
             // 
@@ -205,22 +224,7 @@
             this.lstView.ScrollAlwaysVisible = true;
             this.lstView.Size = new System.Drawing.Size(269, 520);
             this.lstView.TabIndex = 59;
-            // 
-            // txtNome
-            // 
-            this.txtNome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(145)))), ((int)(((byte)(145)))));
-            this.txtNome.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNome.Font = new System.Drawing.Font("Segoe UI Light", 25F);
-            this.txtNome.ForeColor = System.Drawing.Color.White;
-            this.txtNome.Location = new System.Drawing.Point(340, 116);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.ReadOnly = true;
-            this.txtNome.Size = new System.Drawing.Size(372, 45);
-            this.txtNome.TabIndex = 60;
-            this.txtNome.Tag = "editable";
-            this.txtNome.Text = "Sem Cargo";
+            this.lstView.SelectedIndexChanged += new System.EventHandler(this.lstView_SelectedIndexChanged);
             // 
             // pcbStatus
             // 
@@ -236,21 +240,155 @@
             this.pcbStatus.TabStop = false;
             this.pcbStatus.Visible = false;
             // 
-            // txtQtDigitos
+            // txtNmLogin
             // 
-            this.txtQtDigitos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtNmLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQtDigitos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(145)))), ((int)(((byte)(145)))));
-            this.txtQtDigitos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtQtDigitos.Font = new System.Drawing.Font("Segoe UI Light", 18F);
-            this.txtQtDigitos.ForeColor = System.Drawing.Color.White;
-            this.txtQtDigitos.Location = new System.Drawing.Point(339, 193);
-            this.txtQtDigitos.Name = "txtQtDigitos";
-            this.txtQtDigitos.ReadOnly = true;
-            this.txtQtDigitos.Size = new System.Drawing.Size(372, 32);
-            this.txtQtDigitos.TabIndex = 63;
-            this.txtQtDigitos.Tag = "editable";
-            this.txtQtDigitos.Text = "- -";
+            this.txtNmLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(145)))), ((int)(((byte)(145)))));
+            this.txtNmLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNmLogin.Font = new System.Drawing.Font("Segoe UI Light", 18F);
+            this.txtNmLogin.ForeColor = System.Drawing.Color.White;
+            this.txtNmLogin.Location = new System.Drawing.Point(339, 193);
+            this.txtNmLogin.Name = "txtNmLogin";
+            this.txtNmLogin.ReadOnly = true;
+            this.txtNmLogin.Size = new System.Drawing.Size(372, 32);
+            this.txtNmLogin.TabIndex = 63;
+            this.txtNmLogin.Tag = "";
+            this.txtNmLogin.Text = "- -";
+            // 
+            // lblSenha
+            // 
+            this.lblSenha.BackColor = System.Drawing.Color.Gainsboro;
+            this.lblSenha.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.lblSenha.ForeColor = System.Drawing.Color.DimGray;
+            this.lblSenha.Location = new System.Drawing.Point(339, 240);
+            this.lblSenha.Name = "lblSenha";
+            this.lblSenha.Size = new System.Drawing.Size(376, 19);
+            this.lblSenha.TabIndex = 64;
+            this.lblSenha.Text = "SENHA";
+            this.lblSenha.Visible = false;
+            // 
+            // txtSenha
+            // 
+            this.txtSenha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(145)))), ((int)(((byte)(145)))));
+            this.txtSenha.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSenha.Font = new System.Drawing.Font("Segoe UI Light", 18F);
+            this.txtSenha.ForeColor = System.Drawing.Color.White;
+            this.txtSenha.Location = new System.Drawing.Point(339, 260);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.ReadOnly = true;
+            this.txtSenha.Size = new System.Drawing.Size(372, 32);
+            this.txtSenha.TabIndex = 65;
+            this.txtSenha.Tag = "editable";
+            this.txtSenha.UseSystemPasswordChar = true;
+            this.txtSenha.Visible = false;
+            // 
+            // lblConfSenha
+            // 
+            this.lblConfSenha.BackColor = System.Drawing.Color.Gainsboro;
+            this.lblConfSenha.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.lblConfSenha.ForeColor = System.Drawing.Color.DimGray;
+            this.lblConfSenha.Location = new System.Drawing.Point(339, 308);
+            this.lblConfSenha.Name = "lblConfSenha";
+            this.lblConfSenha.Size = new System.Drawing.Size(376, 19);
+            this.lblConfSenha.TabIndex = 66;
+            this.lblConfSenha.Text = "CONFIRMAR SENHA";
+            this.lblConfSenha.Visible = false;
+            // 
+            // txtConfSenha
+            // 
+            this.txtConfSenha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(145)))), ((int)(((byte)(145)))));
+            this.txtConfSenha.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtConfSenha.Font = new System.Drawing.Font("Segoe UI Light", 18F);
+            this.txtConfSenha.ForeColor = System.Drawing.Color.White;
+            this.txtConfSenha.Location = new System.Drawing.Point(339, 328);
+            this.txtConfSenha.Name = "txtConfSenha";
+            this.txtConfSenha.ReadOnly = true;
+            this.txtConfSenha.Size = new System.Drawing.Size(372, 32);
+            this.txtConfSenha.TabIndex = 67;
+            this.txtConfSenha.Tag = "editable";
+            this.txtConfSenha.UseSystemPasswordChar = true;
+            this.txtConfSenha.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.BackColor = System.Drawing.Color.Gainsboro;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.label3.ForeColor = System.Drawing.Color.DimGray;
+            this.label3.Location = new System.Drawing.Point(721, 173);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(277, 19);
+            this.label3.TabIndex = 68;
+            this.label3.Text = "PERMISSÕES";
+            // 
+            // txtNome
+            // 
+            this.txtNome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(145)))), ((int)(((byte)(145)))));
+            this.txtNome.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNome.Font = new System.Drawing.Font("Segoe UI Light", 25F);
+            this.txtNome.ForeColor = System.Drawing.Color.White;
+            this.txtNome.Location = new System.Drawing.Point(340, 116);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.ReadOnly = true;
+            this.txtNome.Size = new System.Drawing.Size(372, 45);
+            this.txtNome.TabIndex = 60;
+            this.txtNome.Tag = "editable";
+            this.txtNome.Text = "Sem Usuários";
+            // 
+            // chkPermissoes
+            // 
+            this.chkPermissoes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkPermissoes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(145)))), ((int)(((byte)(145)))));
+            this.chkPermissoes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkPermissoes.CheckOnClick = true;
+            this.chkPermissoes.Font = new System.Drawing.Font("Segoe UI Light", 15F);
+            this.chkPermissoes.ForeColor = System.Drawing.Color.White;
+            this.chkPermissoes.Location = new System.Drawing.Point(721, 198);
+            this.chkPermissoes.Name = "chkPermissoes";
+            this.chkPermissoes.Size = new System.Drawing.Size(277, 435);
+            this.chkPermissoes.TabIndex = 69;
+            this.chkPermissoes.Tag = "";
+            this.chkPermissoes.Visible = false;
+            // 
+            // asyncConsultar
+            // 
+            this.asyncConsultar.DoWork += new System.ComponentModel.DoWorkEventHandler(this.asyncConsultar_DoWork);
+            this.asyncConsultar.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.asyncConsultar_RunWorkerCompleted);
+            // 
+            // asyncInserir
+            // 
+            this.asyncInserir.DoWork += new System.ComponentModel.DoWorkEventHandler(this.asyncInserir_DoWork);
+            this.asyncInserir.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.asyncInserir_RunWorkerCompleted);
+            // 
+            // lblPermissoes
+            // 
+            this.lblPermissoes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPermissoes.Font = new System.Drawing.Font("Segoe UI Light", 15F);
+            this.lblPermissoes.ForeColor = System.Drawing.Color.White;
+            this.lblPermissoes.Location = new System.Drawing.Point(722, 198);
+            this.lblPermissoes.Name = "lblPermissoes";
+            this.lblPermissoes.Size = new System.Drawing.Size(273, 419);
+            this.lblPermissoes.TabIndex = 82;
+            this.lblPermissoes.Tag = "editable";
+            this.lblPermissoes.Text = "--";
+            // 
+            // asyncExcluir
+            // 
+            this.asyncExcluir.DoWork += new System.ComponentModel.DoWorkEventHandler(this.asyncExcluir_DoWork);
+            this.asyncExcluir.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.asyncExcluir_RunWorkerCompleted);
+            // 
+            // asyncEditar
+            // 
+            this.asyncEditar.DoWork += new System.ComponentModel.DoWorkEventHandler(this.asyncEditar_DoWork);
+            this.asyncEditar.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.asyncEditar_RunWorkerCompleted);
+            // 
+            // tmPesq
+            // 
+            this.tmPesq.Interval = 1000;
+            this.tmPesq.Tick += new System.EventHandler(this.tmPesq_Tick);
             // 
             // frmUsuarioAdmin
             // 
@@ -258,15 +396,23 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(145)))), ((int)(((byte)(145)))));
             this.ClientSize = new System.Drawing.Size(1010, 683);
+            this.Controls.Add(this.lblPermissoes);
+            this.Controls.Add(this.chkPermissoes);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblConfSenha);
+            this.Controls.Add(this.txtConfSenha);
+            this.Controls.Add(this.lblSenha);
+            this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.pnlTopo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lstView);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.pcbStatus);
-            this.Controls.Add(this.txtQtDigitos);
+            this.Controls.Add(this.txtNmLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmUsuarioAdmin";
             this.Text = "frmUsuarioAdmin";
+            this.Load += new System.EventHandler(this.frmUsuarioAdmin_Load);
             this.pnlTopo.ResumeLayout(false);
             this.pnlTopo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbStatus)).EndInit();
@@ -287,8 +433,20 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox lstView;
-        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.PictureBox pcbStatus;
-        private System.Windows.Forms.TextBox txtQtDigitos;
+        private System.Windows.Forms.TextBox txtNmLogin;
+        private System.Windows.Forms.Label lblSenha;
+        private System.Windows.Forms.TextBox txtSenha;
+        private System.Windows.Forms.Label lblConfSenha;
+        private System.Windows.Forms.TextBox txtConfSenha;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.CheckedListBox chkPermissoes;
+        private System.ComponentModel.BackgroundWorker asyncConsultar;
+        private System.ComponentModel.BackgroundWorker asyncInserir;
+        private System.Windows.Forms.Label lblPermissoes;
+        private System.ComponentModel.BackgroundWorker asyncExcluir;
+        private System.ComponentModel.BackgroundWorker asyncEditar;
+        private System.Windows.Forms.Timer tmPesq;
     }
 }

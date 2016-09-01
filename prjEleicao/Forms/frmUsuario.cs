@@ -95,7 +95,7 @@ namespace prjEleicao
 
             dados.Add("nome", nome);
             dados.Add("senhaatual", senhaatual);
-            dados.Add("senhanova", novasenha);
+            dados.Add("senhanova", novasenha == ""?null:novasenha);
 
             pcbStatus.Visible = true;
             asyncEditar.RunWorkerAsync(dados);
@@ -107,8 +107,6 @@ namespace prjEleicao
             txtSenha.Visible = false;
             lblConfSenha.Visible = false;
             txtConfSenha.Visible = false;
-
-            AtualizarView();
         }
 
         #region AsyncInterOP
@@ -118,29 +116,32 @@ namespace prjEleicao
             Dictionary<string, string> dados = (Dictionary<string, string>)e.Argument;
 
             if (Usuario.Login(UsoComum.UsuarioAtual.NomeLogin, dados["senhaatual"]) == null) {
-                e.Result = "loginerror";
-                return;
+                e.Cancel = true;
             }
 
-            UsoComum.UsuarioAtual.Nome = dados["nome"];
-            UsoComum.UsuarioAtual.Editar(dados["senhanova"] != ""?dados["senhanova"]:null);
+            Usuario editaruser = new Usuario(dados["nome"], UsoComum.UsuarioAtual.NomeLogin, dados["senhanova"]);
+            editaruser.Editar();
+
+            UsoComum.UsuarioAtual = editaruser;
         }
 
         private void asyncEditar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             pcbStatus.Visible = false;
-            if ((e.Error == null) && (e.Result != "loginerror"))
+            if ((e.Error == null) && (e.Cancelled == false))
             {
+                AtualizarView();    
                 Aviso.Mensagem("Dados editados com sucesso!");
             }
             else {
-                if (e.Result == "loginerror") {
+                if (e.Cancelled) {
                     Aviso.Alerta("Senha incorreta! Alterações não realizadas.");
                     return;
                 }
                 Aviso.Mensagem("Erro ao editar dados");
             }
         }
+
         #endregion
     }
 }

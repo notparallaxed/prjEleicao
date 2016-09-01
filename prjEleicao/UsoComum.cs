@@ -76,6 +76,10 @@ namespace prjEleicao
                         cb.Visible = true;
                     }
 
+                    if (clt is CheckedListBox) {
+                        clt.Visible = true;
+                    }
+
                 }
                 else
                 {
@@ -124,6 +128,10 @@ namespace prjEleicao
                                 ComboBox cb = (ComboBox)clt;
 
                                 cb.Visible = true;
+                            }
+
+                            if (clt is CheckedListBox) {
+                                clt.Visible = true;
                             }
 
                         }
@@ -185,6 +193,10 @@ namespace prjEleicao
                         cb.Visible = false;
                     }
 
+                    if (clt is CheckedListBox) {
+                        clt.Visible = false;
+                    }
+
                 }
                 else
                 {
@@ -235,6 +247,9 @@ namespace prjEleicao
                                 cb.Visible = false;
                             }
 
+                            if (clt is CheckedListBox) {
+                                clt.Visible = false;
+                            }
 
                         }
                         else
