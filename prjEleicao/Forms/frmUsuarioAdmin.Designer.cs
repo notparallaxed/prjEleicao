@@ -411,7 +411,8 @@
             this.Controls.Add(this.txtNmLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmUsuarioAdmin";
-            this.Text = "frmUsuarioAdmin";
+            this.Text = "USUÁRIOS";
+            this.Activated += new System.EventHandler(this.frmUsuarioAdmin_Activated);
             this.Load += new System.EventHandler(this.frmUsuarioAdmin_Load);
             this.pnlTopo.ResumeLayout(false);
             this.pnlTopo.PerformLayout();

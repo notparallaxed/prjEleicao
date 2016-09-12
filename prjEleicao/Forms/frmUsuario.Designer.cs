@@ -356,7 +356,8 @@
             this.Controls.Add(this.txtNomeUser);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmUsuario";
-            this.Text = "Usuário";
+            this.Text = "USUÁRIO";
+            this.Activated += new System.EventHandler(this.frmUsuario_Activated);
             this.Load += new System.EventHandler(this.frmUsuario_Load);
             this.pnlTopo.ResumeLayout(false);
             this.pnlTopo.PerformLayout();

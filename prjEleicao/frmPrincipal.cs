@@ -221,6 +221,11 @@ namespace prjEleicao
             AbrirJanela(new frmUrna());
         }
 
+        private void mnuEleitor_Click(object sender, EventArgs e)
+        {
+            AbrirJanela(new frmEleitor());
+        }
+
         //USUARIO
         private void btnAtualUser_Click(object sender, EventArgs e)
         {
@@ -240,7 +245,6 @@ namespace prjEleicao
             lblTopText.Text = this.Text;
         }
         #endregion
-
 
     }
 }

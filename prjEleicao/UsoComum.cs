@@ -17,7 +17,6 @@ namespace prjEleicao
         public static frmPrincipal mdi { get; set; }
 
         #region Animation Menu
-
         public static void AnimacaoBotaoMenu(Button btn, Color backColor)
         {
             foreach (Control obj in mdi.pnlMenu.Controls)
@@ -28,8 +27,14 @@ namespace prjEleicao
                     obj.BackColor = Color.FromArgb(0, 188, 212);
                 }
             }
-            btn.Width = 200;
-            btn.BackColor = backColor;//cor de fundo quando selecionado
+            if (btn.Tag == "btnMenu")
+            {
+                btn.Width = 200;
+                btn.BackColor = backColor;//cor de fundo quando selecionado
+            }
+            else {
+                btn.Dispose();
+            }
         }
         #endregion
 
@@ -78,6 +83,13 @@ namespace prjEleicao
 
                     if (clt is CheckedListBox) {
                         clt.Visible = true;
+                    }
+
+                    if (clt is MaskedTextBox) {
+                        MaskedTextBox mask = (MaskedTextBox)clt;
+                        mask.ReadOnly = false;
+                        mask.BackColor = Color.White;
+                        mask.ForeColor = Color.Black;
                     }
 
                 }
@@ -132,6 +144,14 @@ namespace prjEleicao
 
                             if (clt is CheckedListBox) {
                                 clt.Visible = true;
+                            }
+
+                            if (clt is MaskedTextBox)
+                            {
+                                MaskedTextBox mask = (MaskedTextBox)clt;
+                                mask.ReadOnly = false;
+                                mask.BackColor = Color.White;
+                                mask.ForeColor = Color.Black;
                             }
 
                         }
@@ -197,6 +217,13 @@ namespace prjEleicao
                         clt.Visible = false;
                     }
 
+                    if (clt is MaskedTextBox)
+                    {
+                        MaskedTextBox mask = (MaskedTextBox)clt;
+                        mask.ReadOnly = true;
+                        mask.BackColor = janela.BackColor;
+                        mask.ForeColor = Color.White;
+                    }
                 }
                 else
                 {
@@ -249,6 +276,14 @@ namespace prjEleicao
 
                             if (clt is CheckedListBox) {
                                 clt.Visible = false;
+                            }
+
+                            if (clt is MaskedTextBox)
+                            {
+                                MaskedTextBox mask = (MaskedTextBox)clt;
+                                mask.ReadOnly = true;
+                                mask.BackColor = janela.BackColor;
+                                mask.ForeColor = Color.White;
                             }
 
                         }

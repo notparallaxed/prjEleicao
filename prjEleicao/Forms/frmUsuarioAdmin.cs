@@ -20,6 +20,14 @@ namespace prjEleicao
             asyncConsultar.RunWorkerAsync();
         }
 
+        #region Form Focus
+        private void frmUsuarioAdmin_Activated(object sender, EventArgs e)
+        {
+            UsoComum.mdi.Text = "ELECTSIS - " + this.Text;
+            UsoComum.AnimacaoBotaoMenu(new Button(), Color.Black);
+        }
+        #endregion
+
         #region Form Load
         private void frmUsuarioAdmin_Load(object sender, EventArgs e)
         {
@@ -335,6 +343,6 @@ namespace prjEleicao
             tmPesq.Stop();
             tmPesq.Start();
         }
-        
+
     }
 }

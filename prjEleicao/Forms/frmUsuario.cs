@@ -21,6 +21,13 @@ namespace prjEleicao
             Regex rgx = new Regex(@"(?i)[^0-9a-záéíóúàèìòùâêîôûãõç\s]");
         #endregion
 
+        #region Form Focus
+        private void frmUsuario_Activated(object sender, EventArgs e)
+        {
+                UsoComum.mdi.Text = "ELECTSIS - " + this.Text;
+        }
+        #endregion
+        
         #region Form Load
         private void frmUsuario_Load(object sender, EventArgs e)
         {
@@ -143,5 +150,6 @@ namespace prjEleicao
         }
 
         #endregion
+
     }
 }

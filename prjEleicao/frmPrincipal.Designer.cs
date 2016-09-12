@@ -111,7 +111,7 @@
             // 
             // mnuEleitor
             // 
-            this.mnuEleitor.BackColor = System.Drawing.Color.Gainsboro;
+            this.mnuEleitor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(188)))), ((int)(((byte)(212)))));
             this.mnuEleitor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.mnuEleitor.Enabled = false;
             this.mnuEleitor.FlatAppearance.BorderSize = 0;
@@ -124,9 +124,10 @@
             this.mnuEleitor.Name = "mnuEleitor";
             this.mnuEleitor.Size = new System.Drawing.Size(190, 40);
             this.mnuEleitor.TabIndex = 16;
-            this.mnuEleitor.Tag = "";
+            this.mnuEleitor.Tag = "btnMenu";
             this.mnuEleitor.Text = "ELEITOR";
             this.mnuEleitor.UseVisualStyleBackColor = false;
+            this.mnuEleitor.Click += new System.EventHandler(this.mnuEleitor_Click);
             // 
             // pnlTop
             // 

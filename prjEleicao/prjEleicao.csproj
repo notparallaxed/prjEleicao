@@ -53,11 +53,18 @@
     <Compile Include="Aviso.cs" />
     <Compile Include="Classes\Candidato.cs" />
     <Compile Include="Classes\Cargo.cs" />
+    <Compile Include="Classes\Eleitor.cs" />
     <Compile Include="Forms\frmCargo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmCargo.Designer.cs">
       <DependentUpon>frmCargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEleitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEleitor.Designer.cs">
+      <DependentUpon>frmEleitor.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmPartido.cs">
       <SubType>Form</SubType>
@@ -125,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCargo.resx">
       <DependentUpon>frmCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEleitor.resx">
+      <DependentUpon>frmEleitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUrna.resx">
       <DependentUpon>frmUrna.cs</DependentUpon>
@@ -230,6 +240,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\unmaximize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\import.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
